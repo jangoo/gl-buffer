@@ -73,7 +73,7 @@ proto.update = function(array, offset) {
   if(typeof offset !== "number") {
     offset = -1
   }
-  this.bind()
+  //this.bind()
   if(typeof array === "object" && typeof array.shape !== "undefined") { //ndarray
     var dtype = array.dtype
     if(SUPPORTED_TYPES.indexOf(dtype) < 0) {
@@ -145,6 +145,7 @@ function createBuffer(gl, data, type, usage) {
   }
   var handle = gl.createBuffer()
   var result = new GLBuffer(gl, type, handle, 0, usage)
+  result.bind()
   result.update(data)
   return result
 }
